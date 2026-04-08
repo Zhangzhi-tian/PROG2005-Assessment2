@@ -1,0 +1,104 @@
+/* Global page styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Container layout */
+.container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+/* Navigation bar */
+.navbar {
+  background-color: #2563eb;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.15);
+}
+
+.nav-links a:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Content area */
+.content {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h3, h4 {
+  color: #1e40af;
+  margin-bottom: 1rem;
+}
+
+/* Form and table cards */
+.form-card, .table-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+}
+
+input, button {
+  width: 100%;
+  padding: 0.7rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+button {
+  background-color: #2563eb;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+th, td {
+  padding: 0.8rem;
+  border: 1px solid #eee;
+  text-align: left;
+}
+
+th {
+  background-color: #eff6ff;
+  color: #1e40af;
+}
+
+/* Action buttons */
+.btn-stock { background: #10b981; }
+.btn-delete { background: #ef4444; }

@@ -1,0 +1,106 @@
+<!-- Main Container -->
+<div class="container">
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <h2>Inventory Management System (Angular Part 2)</h2>
+    <div class="nav-links">
+      <a routerLink="/">Home</a>
+      <a routerLink="/manage">Manage Items</a>
+      <a routerLink="/search">Search</a>
+      <a routerLink="/privacy">Privacy</a>
+      <a routerLink="/help">Help</a>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="content">
+    <router-outlet></router-outlet>
+
+    <!-- Home Page -->
+    <div *ngIf="router.url === '/'">
+      <h3>Welcome to Inventory System</h3>
+      <p>Manage your store inventory easily. Add, edit, delete, and search items.</p>
+    </div>
+
+    <!-- Manage Items Page -->
+    <div *ngIf="router.url === '/manage'">
+      <h3>Manage Inventory Items</h3>
+
+      <!-- Add New Item Form -->
+      <div class="form-card">
+        <h4>Add New Item</h4>
+        <input type="number" [(ngModel)]="newItem.id" placeholder="Item ID">
+        <input type="text" [(ngModel)]="newItem.name" placeholder="Item Name">
+        <input type="text" [(ngModel)]="newItem.category" placeholder="Category">
+        <input type="number" step="0.01" [(ngModel)]="newItem.price" placeholder="Price (USD)">
+        <button (click)="addItem()">Add Item</button>
+      </div>
+
+      <!-- Items List Table -->
+      <div class="table-card">
+        <h4>Current Items</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>In Stock</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td>{{ item.id }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.category }}</td>
+              <td>${{ item.price.toFixed(2) }}</td>
+              <td>{{ item.inStock ? '✅ Yes' : '❌ No' }}</td>
+              <td>
+                <button class="btn-stock" (click)="toggleStock(item.id)">Stock</button>
+                <button class="btn-delete" (click)="deleteItem(item.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Search Page -->
+    <div *ngIf="router.url === '/search'">
+      <h3>Search Items</h3>
+      <input type="text" placeholder="Search by item name..." #searchInput>
+      <button (click)="searchItems(searchInput.value)">Search</button>
+
+      <div class="results">
+        <h4>Search Results</h4>
+        <table>
+          <tr><th>ID</th><th>Name</th><th>Category</th><th>Price</th></tr>
+          <tr *ngFor="let item of filteredItems">
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.category }}</td>
+            <td>${{ item.price.toFixed(2) }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Privacy Page -->
+    <div *ngIf="router.url === '/privacy'">
+      <h3>Privacy & Data Policy</h3>
+      <p>All data is stored locally in your browser.</p>
+      <p>No data is sent to external servers.</p>
+    </div>
+
+    <!-- Help Page -->
+    <div *ngIf="router.url === '/help'">
+      <h3>Help & User Guide</h3>
+      <p>1. Use Manage Items to add new products.</p>
+      <p>2. Use Search to find items quickly.</p>
+      <p>3. Toggle Stock to change availability.</p>
+      <p>4. Delete to remove unwanted items.</p>
+    </div>
+  </div>
+</div>
